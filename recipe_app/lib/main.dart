@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app/features/recipe/presentation/welcome.dart';
+
+import 'features/recipe/presentation/widgets/welcome.dart';
 
 void main() {
-  runApp(MaterialApp(home: WelcomeToRecipe(),));
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyStatefulWidget(),
+  ));
 }
