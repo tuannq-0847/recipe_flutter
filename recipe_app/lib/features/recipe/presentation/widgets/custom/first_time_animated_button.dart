@@ -1,7 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+Function _onPressed;
+
+// ignore: must_be_immutable
 class FirstTimeAnimatedButton extends StatefulWidget {
+
+  FirstTimeAnimatedButton(Function onPressed) {
+    _onPressed = onPressed;
+  }
+
   @override
   State<StatefulWidget> createState() => _AnimatedButtonState();
 }
@@ -43,7 +51,10 @@ class _AnimatedButtonState extends State<FirstTimeAnimatedButton>
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0)))),
-              onPressed: () {},
+              onPressed: () {
+                // ignore: unnecessary_statements
+                _onPressed();
+              },
               child: Text(
                 "Let's go",
                 style: TextStyle(color: Colors.white, fontSize: 16),

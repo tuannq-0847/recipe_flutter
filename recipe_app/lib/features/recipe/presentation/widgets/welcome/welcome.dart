@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
-
-import 'custom/first_time_animated_button.dart';
-import 'custom/translate_text.dart';
+import 'package:recipe_app/features/recipe/presentation/widgets/custom/first_time_animated_button.dart';
+import 'package:recipe_app/features/recipe/presentation/widgets/custom/translate_text.dart';
+import 'package:recipe_app/features/recipe/presentation/widgets/home/home.dart';
 
 class MyStatefulWidget extends StatefulWidget {
   @override
@@ -22,6 +22,7 @@ class WelcomeToRecipe extends State<MyStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         body: SafeArea(
           child: Stack(
@@ -55,7 +56,10 @@ class WelcomeToRecipe extends State<MyStatefulWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         TranslateText(data),
-                        FirstTimeAnimatedButton()
+                        FirstTimeAnimatedButton((){
+                          print("onPressed....");
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => HomeWidget()));
+                        })
                       ],
                     )
                 ),
