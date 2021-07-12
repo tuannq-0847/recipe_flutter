@@ -1,15 +1,22 @@
 
 import 'package:flutter/material.dart';
+import 'package:recipe_app/features/recipe/domain/repositories/recipe_repository.dart';
 import 'package:recipe_app/features/recipe/presentation/widgets/custom/first_time_animated_button.dart';
 import 'package:recipe_app/features/recipe/presentation/widgets/custom/translate_text.dart';
 import 'package:recipe_app/features/recipe/presentation/widgets/home/home.dart';
 
 class MyStatefulWidget extends StatefulWidget {
+  final RecipeRepository repository;
+
+  MyStatefulWidget(this.repository);
   @override
-  State<MyStatefulWidget> createState() => WelcomeToRecipe();
+  State<MyStatefulWidget> createState() => WelcomeToRecipe(repository);
 }
 
 class WelcomeToRecipe extends State<MyStatefulWidget> {
+  final RecipeRepository repository;
+
+  WelcomeToRecipe(this.repository);
   double sideLength = 100;
   List<Widget> data = [Text(
     'Cooking a\nDelicious Food\nEasily',
@@ -58,7 +65,8 @@ class WelcomeToRecipe extends State<MyStatefulWidget> {
                         TranslateText(data),
                         FirstTimeAnimatedButton((){
                           print("onPressed....");
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => HomeWidget()));
+                          repository.getRecipes();
+                          // Navigator.push(context,MaterialPageRoute(builder: (context) => HomeWidget()));
                         })
                       ],
                     )
